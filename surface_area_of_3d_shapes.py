@@ -66,11 +66,19 @@ class Solution:
                     continue
                 # 2. 四周及内部的处理
                 # 1> 首先判断该位置四周是否有其他方块
-                for row, col in [[i - 1, j], [i + 1, j], [i, j - 1], [i, j + 1]]:
-                    if row in range(N) and col in range(N):  # 判断下标是否有效
-                        areas += max(0, grid[i][j] - grid[row][col])
-                    else:
-                        areas += grid[i][j]
+                # for row, col in [[i - 1, j], [i + 1, j], [i, j - 1], [i, j + 1]]:
+                #     if row in range(N) and col in range(N):  # 判断下标是否有效
+                #         areas += max(0, grid[i][j] - grid[row][col])
+                #     else:
+                #         areas += grid[i][j]
+
+                top = 0 if i == 0 else grid[i - 1][j]  # 方格上方方格的高度
+                bottom = 0 if i == N - 1 else grid[i + 1][j]  # 方格下方方格的高度
+                left = 0 if j == 0 else grid[i][j - 1]  # 方格左边方格的高度
+                right = 0 if j == N - 1 else grid[i][j + 1]  # 方格右边方格的高度
+
+                for k in (top, bottom, left, right):
+                    areas += max(0, grid[i][j] - k)
 
         return areas
 

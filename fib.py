@@ -1,8 +1,8 @@
 """Fibonacci"""
 import time
 
-
 nums = [1, 1]
+
 
 # Method 1: 遍历
 def fib_traverse(n):
